@@ -1,16 +1,16 @@
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
 
-gulp.task('test', function() {
+gulp.task('test', function () {
   var error = false;
   gulp.
     src('./test.js').
     pipe(mocha()).
-    on('error', function() {
+    on('error', function () {
       console.log('Tests failed!');
       error = true;
     }).
-    on('end', function() {
+    on('end', function () {
       if (!error) {
         console.log('Tests succeeded! Enter the below code:\n' +
           require('fs').readFileSync('./output.dat'));
@@ -19,6 +19,6 @@ gulp.task('test', function() {
     });
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
   gulp.watch(['./test.js', './interface.js'], ['test']);
 });
